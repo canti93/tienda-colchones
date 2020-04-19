@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const Colchon = require('../models/colchon');
+const {User} = require('../models/user');
+const auth = require('../middleware/auth');
+
 const router = express.Router();
 
 /* Listado de todos los colchones */

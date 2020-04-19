@@ -10,8 +10,17 @@ import { CreateColchonComponent } from './colchon/create-colchon/create-colchon.
 import { ListSomierComponent } from './somier/list-somier/list-somier.component';
 import { CreateSomierComponent } from './somier/create-somier/create-somier.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/* imports material design */
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +37,15 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

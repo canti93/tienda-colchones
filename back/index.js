@@ -20,6 +20,6 @@ app.use('/api/auth/', auth);
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log('Escuchando por el puerto ' + port));
 
-mongoose.connect('mongodb://localhost/colchonesdb', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+mongoose.connect('mongodb://localhost/colchonesdb', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
         .then(()=> console.log('Conexion con exito a la BD'))
         .catch(error => console.log('No se ha conectado a la BD'));

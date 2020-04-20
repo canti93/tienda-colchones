@@ -15,6 +15,16 @@ export class ColchonService {
     return this.http.post<any>(this.colchonUrl, colchon)
   }
 
+  editColchon(colchon){
+    return this.http.put<any>(this.colchonUrl, colchon)
+  }
+
+  deleteColchon(colchon){
+    const _id = colchon._id
+    const url = `${this.colchonUrl}/${_id}`
+    return this.http.delete<any>(url)
+  }
+
   getColchones(){
     return this.http.get<any>(this.listColchonUrl)
   }

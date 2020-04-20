@@ -1,1 +1,21 @@
-<p>list-somier works!</p>
+<div class="accordion_display">
+    <div class="accordion_size">
+        <mat-accordion multi="true" *ngIf="somieres.length">
+            <mat-expansion-panel *ngFor="let somier of somieres" hideToggle="false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <span class="text_center">{{somier.title}}</span>
+                        <span class="spacer"></span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-panel-description>
+                    {{somier.price}} €
+                </mat-panel-description>
+                <mat-action-row>
+                    <span class="spacer"></span>
+                    <mat-icon color="primary" (click)="delete(somier)">delete</mat-icon>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

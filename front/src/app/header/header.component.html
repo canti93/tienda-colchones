@@ -13,7 +13,7 @@
     </ul>
     <span class="spacer"></span>
     <ul>
-        <a mat-button routerLink='login'>Login</a>
-        <a mat-button>Log out</a>
+        <a *ngIf="!auths.isLogged()" mat-button routerLink="login">Log in</a>
+        <a *ngIf="auths.isLogged()" mat-button (click)="auths.logoutUser()">Logout</a>
     </ul>
 </mat-toolbar>

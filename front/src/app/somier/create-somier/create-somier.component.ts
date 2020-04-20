@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SomierService} from '../../service/somier.service'
+import { SomierService} from '../../service/somier.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-somier',
@@ -10,7 +12,7 @@ export class CreateSomierComponent implements OnInit {
 
   createSomier = <any>{}
 
-  constructor(private somierService: SomierService) { }
+  constructor(private somierService: SomierService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +20,10 @@ export class CreateSomierComponent implements OnInit {
   create(){
     this.somierService.createSomier(this.createSomier)
         .subscribe(
-          res => {console.log(res)},
+          res => {
+            console.log(res)
+            this.router.navigate(['/somieres'])
+          },
           err => console.log(err)
         )
   }

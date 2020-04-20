@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColchonService } from '../../service/colchon.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-colchon',
@@ -9,6 +10,7 @@ import { ColchonService } from '../../service/colchon.service';
 export class ListColchonComponent implements OnInit {
 
   colchones = <any>[]
+  createColchon = <any>{}
 
   constructor(private colchonService: ColchonService) { }
 
@@ -19,6 +21,36 @@ export class ListColchonComponent implements OnInit {
           this.colchones = res
         },
         err=> console.log(err)
+      )
+  }
+
+  edit(colchonTarget){
+    this.colchonService.editColchon(colchonTarget)
+      .subscribe(
+        res=>{
+          colchonTarget.title = colchonTarget.title
+          //console.log(colchon)
+        },
+        err=>{}
+      )
+  }
+
+  delete(colchon){
+    this.colchonService.deleteColchon(colchon)
+      .subscribe(
+        res=>{
+          const index = this.colchones.indexOf(colchon)
+          if(index>-1){
+            this.colchones.splice(index,1)
+          }
+        },
+        err=>{
+          console.log(err)
+          if(err instanceof HttpErrorResponse){
+            if(err.status === 401){
+            }
+          }
+        }
       )
   }
 

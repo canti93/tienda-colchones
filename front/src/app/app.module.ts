@@ -12,17 +12,18 @@ import { CreateSomierComponent } from './somier/create-somier/create-somier.comp
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* imports material design */
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatListModule} from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptorService} from './service/token-interceptor.service';
+import { TokenInterceptorService } from './service/token-interceptor.service';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { ColchonService } from './service/colchon.service';
@@ -51,14 +52,15 @@ import { SomierService } from './service/somier.service';
     ReactiveFormsModule,
     HttpClientModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
   providers: [AuthService, ColchonService, SomierService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-  }],
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

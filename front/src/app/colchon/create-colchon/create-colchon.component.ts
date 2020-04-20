@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColchonService } from '../../service/colchon.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-colchon',
@@ -10,7 +12,7 @@ export class CreateColchonComponent implements OnInit {
 
   createColchon = <any>{}
 
-  constructor(private colchonService: ColchonService) { }
+  constructor(private colchonService: ColchonService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +20,10 @@ export class CreateColchonComponent implements OnInit {
   create(){
     this.colchonService.createColchon(this.createColchon)
         .subscribe(
-          res => {console.log(res)},
+          res => {
+            console.log(res)
+            this.router.navigate(['/colchones'])
+          },
           err => console.log(err)
         )
   }

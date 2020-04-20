@@ -14,4 +14,14 @@ export class SomierService {
   createSomier(somier){
     return this.http.post<any>(this.somierUrl, somier)
   }
+
+  getSomieres(){
+    return this.http.get<any>(this.listSomierUrl)
+  }
+
+  deleteSomier(somier){
+    const _id = somier._id
+    const url = `${this.somierUrl}/${_id}`
+    return this.http.delete<any>(url)
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ColchonService } from '../../service/colchon.service';
 
 @Component({
   selector: 'app-create-colchon',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateColchonComponent implements OnInit {
 
-  constructor() { }
+  createColchon = <any>{}
+
+  constructor(private colchonService: ColchonService) { }
 
   ngOnInit(): void {
+  }
+
+  create(){
+    this.colchonService.createColchon(this.createColchon)
+        .subscribe(
+          res => {console.log(res)},
+          err => console.log(err)
+        )
   }
 
 }

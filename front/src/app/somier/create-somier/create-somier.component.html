@@ -1,1 +1,26 @@
-<p>create-somier works!</p>
+<div class="form">
+    <mat-card class="card">
+        <mat-card-title>Create Somier</mat-card-title>
+        <mat-card-content>
+            <div class="container">
+                <mat-form-field>
+                    <input [(ngModel)]="createSomier.title" matInput placeholder="Name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input [(ngModel)]="createSomier.description" matInput placeholder="Description">
+                </mat-form-field>
+                <mat-form-field>
+                    <input [(ngModel)]="createSomier.price" matInput placeholder="Price">
+                </mat-form-field>
+                <mat-form-field>
+                    <input [(ngModel)]="createSomier.image" matInput placeholder="Image">
+                </mat-form-field>
+                <!-- <input type="file" (change)="onFileSelected($event)"> -->
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="create()" class="button" mat-raised-button color="accent">Create Somier</button>
+            <!-- <button (click)="createUploadImage()" class="button" mat-raised-button color="accent">Create Task</button>  -->
+        </mat-card-actions>
+    </mat-card>
+</div>

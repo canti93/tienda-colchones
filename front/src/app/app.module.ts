@@ -20,7 +20,11 @@ import {MatCardModule} from '@angular/material/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService} from './service/token-interceptor.service';
 import { AuthService } from './service/auth.service';
+import { AuthGuard } from './guard/auth.guard';
+import { ColchonService } from './service/colchon.service';
+import { SomierService } from './service/somier.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,12 @@ import { AuthService } from './service/auth.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ColchonService, SomierService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

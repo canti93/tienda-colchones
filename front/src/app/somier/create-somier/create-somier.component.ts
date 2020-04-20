@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SomierService} from '../../service/somier.service'
 
 @Component({
   selector: 'app-create-somier',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateSomierComponent implements OnInit {
 
-  constructor() { }
+  createSomier = <any>{}
+
+  constructor(private somierService: SomierService) { }
 
   ngOnInit(): void {
+  }
+
+  create(){
+    this.somierService.createSomier(this.createSomier)
+        .subscribe(
+          res => {console.log(res)},
+          err => console.log(err)
+        )
   }
 
 }

@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ListSomierComponent } from './somier/list-somier/list-somier.component';
 import { CreateColchonComponent } from './colchon/create-colchon/create-colchon.component';
 import { CreateSomierComponent } from './somier/create-somier/create-somier.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [{
@@ -16,16 +17,20 @@ const routes: Routes = [{
   component: LoginComponent
 },{
   path: 'colchones',
-  component: ListColchonComponent
+  component: ListColchonComponent,
+  canActivate: [AuthGuard]
 },{
   path: 'somieres',
-  component: ListSomierComponent
+  component: ListSomierComponent,
+  canActivate: [AuthGuard]
 },{
   path: 'createColchones',
-  component: CreateColchonComponent
+  component: CreateColchonComponent,
+  canActivate: [AuthGuard]
 },{
   path: 'createSomieres',
-  component: CreateSomierComponent
+  component: CreateSomierComponent,
+  canActivate: [AuthGuard]
 }
 ];
 

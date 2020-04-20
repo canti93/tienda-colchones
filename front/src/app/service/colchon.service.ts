@@ -14,4 +14,8 @@ export class ColchonService {
   createColchon(colchon){
     return this.http.post<any>(this.colchonUrl, colchon)
   }
+
+  getColchones(){
+    return this.http.get<any>(this.listColchonUrl)
+  }
 }

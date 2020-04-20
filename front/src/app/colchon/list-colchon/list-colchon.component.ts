@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ColchonService } from '../../service/colchon.service';
 
 @Component({
   selector: 'app-list-colchon',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListColchonComponent implements OnInit {
 
-  constructor() { }
+  colchones = <any>[]
 
-  ngOnInit(): void {
+  constructor(private colchonService: ColchonService) { }
+
+  ngOnInit() {
+    this.colchonService.getColchones()
+      .subscribe(
+        res=>{
+          this.colchones = res
+        },
+        err=> console.log(err)
+      )
   }
 
 }

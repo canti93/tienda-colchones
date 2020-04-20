@@ -2,9 +2,8 @@ const express = require('express')
 const router = express.Router()
 const {User} = require('../models/user')
 
-/* let em = "admin@pepe.com"
-let pass = "admin"
-new User({email: em, password: pass}).save() */
+const userAdmin = new User({email: "admin@admin.com", password: "admin"})
+userAdmin.save()
 
 router.post('/', async(req, res)=>{
     let user = await User.findOne({email: req.body.email})
